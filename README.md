@@ -103,4 +103,4 @@ An AI-generated image matching the description 🎨
 
 ---
 
-👉 Do you want me to also create a **`requirements.txt`** file so others can install all dependencies in one go?
+
