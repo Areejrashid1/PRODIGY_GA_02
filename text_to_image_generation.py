@@ -11,34 +11,26 @@ Original file is located at
 
 !pip install diffusers --upgrade
 !pip install invisible_watermark transformers accelerate safetensors gradio
-
 from diffusers import DiffusionPipeline
 import torch
 import gradio as gr
 import matplotlib.pyplot as plt
 
 """* **Step 3: Initializing base pipeline **"""
-
 pipe = DiffusionPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-base-1.0",
     torch_dtype=torch.float16,
     use_safetensors=True,
     variant="fp16"
 )
-
 pipe.to("cuda")
-
 """* Defining Functions for gradio
-
 """
-
 def generate_image(prompt, negative_prompt=""):
     # Generate image using the pipeline
     image = pipe(prompt=prompt, negative_prompt=negative_prompt).images[0]
     return image
-
 """* Creating Interface"""
-
 iface = gr.Interface(
     fn=generate_image,
     inputs=[
@@ -51,5 +43,4 @@ iface = gr.Interface(
 )
 
 """* Launching App"""
-
 iface.launch()
